@@ -1,0 +1,7 @@
+配置代理 git config --global http.proxy http://user:password@http://proxyneusoft.com:8080
+删除代理 git config --global --unset http.proxy
+
+为cmd设置代理
+set http_proxy=http://proxyneusoft.com:8080
+set http_proxy_user=
+set http_proxy_pass=
