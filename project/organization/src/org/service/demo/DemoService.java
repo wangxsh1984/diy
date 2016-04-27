@@ -6,4 +6,6 @@ import org.model.demo.DemoModel;
 
 public interface DemoService {
 	public List<DemoModel> searchDemo();
+
+	public List<DemoModel> searchByQBC();
 }

@@ -20,7 +20,7 @@ public class DemoController {
 	@RequestMapping("/goDemo")
 	public String goDemo(Map map) {
 		log.info("--------------------goDemo----------------------");
-		List<DemoModel> demoList = demoService.searchDemo();
+		List<DemoModel> demoList = demoService.searchByQBC();//.searchDemo();
 		map.put("demoList", demoList);
 		return "demo/demo";
 	}
