@@ -38,7 +38,7 @@
 				<!-- 设置Hibernate方言 -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<!-- 是否打印sql -->
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<!-- 格式化sql -->
 				<prop key="hibernate.format_sql">true</prop>
 				<!-- 是否自动更新表 -->
@@ -50,5 +50,8 @@
 				<prop key="hibernate.use_sql_comments">true</prop>
 			</props>
 		</property>
+	</bean>
+	<bean name="DemoService" class="org.service.demo.impl.DemoServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>
