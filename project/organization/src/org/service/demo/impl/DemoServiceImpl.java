@@ -7,13 +7,14 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.model.demo.DemoModel;
 import org.service.demo.DemoService;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.util.OrgHibernateTemplate;
 
-public class DemoServiceImpl<T> implements DemoService {
-	private HibernateTemplate hibernateTemplate;
+public class DemoServiceImpl implements DemoService {
+	private OrgHibernateTemplate<DemoModel> hibernateTemplate;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.hibernateTemplate = new HibernateTemplate(sessionFactory);
+		this.hibernateTemplate = new OrgHibernateTemplate<DemoModel>(
+				sessionFactory);
 	}
 
 	public List<DemoModel> searchDemo() {
@@ -29,4 +30,5 @@ public class DemoServiceImpl<T> implements DemoService {
 		dc.add(Restrictions.eq("username", "222"));
 		return hibernateTemplate.findByCriteria(dc);
 	}
+
 }

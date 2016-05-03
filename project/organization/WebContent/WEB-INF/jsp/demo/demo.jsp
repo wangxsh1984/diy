@@ -7,6 +7,8 @@
 	href="<%=request.getContextPath()%>/css/default/default.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/jquery-1.7.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/ajaxfileupload.js"></script>
 <script type="text/javascript">
 	function sendAjaxPost() {
 		$.post("<%=request.getContextPath()%>/demo/goAjax.do", {
@@ -31,14 +33,31 @@
 			}
 		});
 	}
+	function ajaxFileUpload(){
+		$.ajaxFileUpload({
+			url : '<%=request.getContextPath()%>/demo/fileUpload.do',
+			secureuri : false,//安全协议
+			fileElementId:'file',//id
+			type : 'POST',
+			dataType : 'json',
+			data:"{demo:test}",
+			async : false,
+			error : function(data,status,e) {
+				alert('Operate Failed!');
+			},
+			success : function(json) {
+				$("#aaa").html("附件上传成功");
+			}
+		});
+	}
 </script>
 </head>
 <body>
-	<h1>demo</h1>
-	<c:forEach var="demo" items="${demoList}">
-		<c:out value="${demo.username}"></c:out>
-		<br />
-	</c:forEach>
-	<input type="text">
-	<button onclick="ajaxTest()">AJAX</button>
+	<div id="aaa"></div>
+	<form id="testForm" action="fileUpload.do" method="post"
+		enctype="multipart/form-data">
+		<input type="file" name="file" id="file"/>
+		<button onclick="ajaxFileUpload()">AJAX</button><br />
+	</form>
+
 </body>
