@@ -35,7 +35,7 @@
 	}
 	function ajaxFileUpload(){
 		$.ajaxFileUpload({
-			url : '<%=request.getContextPath()%>/demo/fileUpload.do',
+			url : '<%=request.getContextPath()%>/demo/ajaxFileUpload.do',
 			secureuri : false,//安全协议
 			fileElementId:'file',//id
 			type : 'POST',
@@ -46,7 +46,10 @@
 				alert('Operate Failed!');
 			},
 			success : function(json) {
-				$("#aaa").html("附件上传成功");
+				if(json!="last"){
+					$("#file").remove();
+					ajaxFileUpload();
+				}
 			}
 		});
 	}
@@ -57,7 +60,10 @@
 	<form id="testForm" action="fileUpload.do" method="post"
 		enctype="multipart/form-data">
 		<input type="file" name="file" id="file"/>
+		<br/>
+		<input type="file" name="file" id="file"/>
 		<button onclick="ajaxFileUpload()">AJAX</button><br />
+		<input type="submit">
 	</form>
 
 </body>

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,9 +43,12 @@ public class DemoController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/fileUpload")
-	public String fileUpload(MultipartFile file) {
+	@RequestMapping("/ajaxFileUpload")
+	public String ajaxFileUpload(@RequestParam("file") MultipartFile file) {
 		File newFile = new File("D://upfile.png");
+		if (file == null) {
+			return "{last}";
+		}
 		try {
 			InputStream is = file.getInputStream();
 			byte[] b = new byte[(int) file.getSize()];
@@ -64,4 +68,25 @@ public class DemoController {
 		return "{\"success\":\"aaa成功\"}";
 	}
 
+	@RequestMapping("/fileUpload")
+	public String fileUpload(@RequestParam("file") MultipartFile[] file) {
+		File newFile = new File("D://upfile.png");
+		try {
+			InputStream is = file[1].getInputStream();
+			byte[] b = new byte[(int) file[1].getSize()];
+			int read = 0;
+			int i = 0;
+			while ((read = is.read()) != -1) {
+				b[i] = (byte) read;
+				i++;
+			}
+			OutputStream os = new FileOutputStream(newFile);
+			os.write(b);
+			os.flush();
+			os.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "{\"success\":\"aaa成功\"}";
+	}
 }
