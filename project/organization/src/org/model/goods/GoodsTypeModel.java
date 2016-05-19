@@ -1,6 +1,6 @@
 package org.model.goods;
 
-public class GoodsType {
+public class GoodsTypeModel {
 	private Long id;
 	private String typeName;
 

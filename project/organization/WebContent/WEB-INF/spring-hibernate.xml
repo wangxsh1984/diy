@@ -28,12 +28,8 @@
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="datasource" />
 		<!-- 注意：我用的是Annotation的方式配置的Hibernate，这里的property的name是annotatedClasses -->
-		<!-- 
-		<property name="annotatedClasses">
-			<list>
-				<value>org.model.demo.DemoModel</value>
-			</list>
-		</property> -->
+		<!-- <property name="annotatedClasses"> <list> <value>org.model.demo.DemoModel</value> 
+			</list> </property> -->
 		<property name="packagesToScan">
 			<value>org.model</value>
 		</property>
@@ -54,8 +50,5 @@
 				<prop key="hibernate.use_sql_comments">true</prop>
 			</props>
 		</property>
-	</bean>
-	<bean name="DemoService" class="org.service.demo.impl.DemoServiceImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>

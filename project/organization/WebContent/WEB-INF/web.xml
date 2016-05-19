@@ -21,7 +21,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/springmvc-servlet.xml;/WEB-INF/spring-hibernate.xml</param-value>
+			<param-value>/WEB-INF/springmvc-servlet.xml;/WEB-INF/spring-hibernate.xml;/WEB-INF/spring-beans.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

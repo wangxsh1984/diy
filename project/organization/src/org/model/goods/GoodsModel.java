@@ -1,6 +1,12 @@
 package org.model.goods;
 
-public class Goods {
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+public class GoodsModel {
 	private Long id;
 	// 货品名称
 	private String goodsName;
@@ -13,6 +19,10 @@ public class Goods {
 	// 备注
 	private String goodsRemark;
 
+	@Id
+	@GeneratedValue(generator = "systemUUID")
+	@GenericGenerator(name = "systemUUID", strategy = "uuid")
+	@Column(name = "goodsid", insertable = true, updatable = true, nullable = false)
 	public Long getId() {
 		return id;
 	}

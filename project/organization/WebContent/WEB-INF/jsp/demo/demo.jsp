@@ -63,7 +63,7 @@
 		<br/>
 		<input type="file" name="file" id="file"/>
 		<button onclick="ajaxFileUpload()">AJAX</button><br />
-		<input type="submit">
+		<input type="submit" value="确定"/>
 	</form>
 
 </body>
